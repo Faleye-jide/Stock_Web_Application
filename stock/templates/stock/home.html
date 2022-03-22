@@ -6,7 +6,12 @@
     <title>StockHub</title>
 </head>
 <body>
-    <p>Hello, This is my first stock web application</p>
-    
+    <form action="/stock/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+
+    </form>
+
 </body>
 </html>

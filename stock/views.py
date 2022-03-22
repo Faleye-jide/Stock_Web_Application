@@ -1,7 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.http import HttpResponse
+# from .forms import TickerForm
 
 # Create your views here.
 def home(request):
-    return render(request, 'stock/home.html')
+    pass
+    # form = TickerForm()
+    # return render(request, 'stock/home.html', {'form':form})
