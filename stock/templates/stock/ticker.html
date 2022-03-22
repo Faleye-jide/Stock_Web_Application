@@ -6,6 +6,13 @@
     <title>Ticker</title>
 </head>
 <body>
-    <h1> {{ ticker }} </h1>
+    <h1> {{ meta.name }} ({{ ticker }})</h1>
+    <p> Description: {{ meta.description }}</p>
+    <p> Open: {{ price.open }}
+    <p> Low: {{ price.low }}
+    <p> High: {{ price.high }}
+    <p> Close: {{ price.close }}
+
+
 </body>
 </html>
