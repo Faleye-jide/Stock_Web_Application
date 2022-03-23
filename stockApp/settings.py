@@ -15,6 +15,9 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Templates directory 
+# TEMPLATE_DIR = os.path.join(BASE_DIR,"templates")
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -55,7 +58,7 @@ ROOT_URLCONF = 'stockApp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:\Users\laptop2\OneDrive\Desktop\Computer Science\djangoWork\django_work\stockApp\stock\templates\stock'],
+        'DIRS': ['C:/Users/laptop2/OneDrive/Desktop/Computer Science/djangoWork/django_work/stockApp/stock/templates/stock'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
