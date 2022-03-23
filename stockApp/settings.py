@@ -55,7 +55,7 @@ ROOT_URLCONF = 'stockApp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['C:\Users\laptop2\OneDrive\Desktop\Computer Science\djangoWork\django_work\stockApp\stock\templates\stock'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
