@@ -17,10 +17,8 @@ def home(request):
 
 def ticker(request, ticker_id): 
     context = {
-        'ticker' : ticker_id,
-        'meta':get_data(ticker_id),
-        'price' : get_quote(ticker_id)
+        'ticker': ticker_id,
+        'meta': get_data(ticker_id),
+        'price': get_quote(ticker_id)
     }
-    # context['ticker'] = ticker_id
-    # context['meta'] = get_data[ticker_id]
     return render(request, 'stock/ticker.html', context)

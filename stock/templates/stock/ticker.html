@@ -1,11 +1,19 @@
-{% extends 'base.html' %}
+{% extends 'stock/base.html' %}
 {% block title %} {{ ticker}} {% endblock title %}
 {% block content %}
+<div class="container table-center">
     <h1> {{ meta.name }} ({{ ticker }})</h1>
     <p> Description: {{ meta.description }}</p>
-    <p> Open: {{ price.open }}</p>
-    <p> Low: {{ price.low }}</p>
-    <p> High: {{ price.high }}</p>
-    <p> Close: {{ price.close }}</p>
+    <h3> Today's stock price for {{ meta.name }}</h3>
+    <table class="table text-center">
+        <tr><td>Open:</td><td> ${{ price.open }}</td></tr>
+        <tr><td>High:</td><td> ${{ price.high }}</td></tr>
+        <tr><td>Low:</td><td> ${{ price.low }}</td></tr>
+        <tr><td>Close:</td><td> ${{ price.close }}</td></tr>
+        <!-- <tr><td>Adj Close:</td><td> ${{ price.Adj }}</td></tr>
+        <tr><td>Exchange:</td><td> ${{ price.exchangeCode }}</td></tr> -->
+    </table>
+</div>
 
 {% endblock %}
+
