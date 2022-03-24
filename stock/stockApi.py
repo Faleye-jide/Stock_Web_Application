@@ -29,18 +29,9 @@ def get_quote(ticker):
     url = 'https://api.tiingo.com/tiingo/daily/{}/prices'.format(ticker)
     response = requests.get(url, headers=headers).json()
     return response[0]
-    # get price for each ticker
-    # price = response[0]
-    # return price
-
-# get_data(ticker)
-# name = get_data(ticker)
-
-#     name = response['name']
-#     print(name)
     
-# # for ticker in ticker_list:
-# stock_name = get_data(ticker)
-
+    
+def news(request):
+    pass
 
 

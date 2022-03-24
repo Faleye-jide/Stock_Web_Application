@@ -6,6 +6,8 @@ from .stockApi import get_data, get_quote
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
+from .models import stock
+
 
 # Create your views here.
 def home(request):
@@ -25,6 +27,11 @@ def ticker(request, ticker_id):
         'price': get_quote(ticker_id)
     }
     return render(request, 'stock/ticker.html', context)
+
+
+def about(request):
+    return render(request, 'stock/about.html', {})
+
 
 def register(request):
     if request.method == 'POST':

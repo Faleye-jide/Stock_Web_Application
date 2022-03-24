@@ -8,8 +8,8 @@ class TickerForm(forms.Form):
     
 
 class NewUserForm(forms.Form):
-    first_name = forms.CharField(max_length=30, help_text='Optional', required=True)
-    last_name = forms.CharField(max_length=30, help_text= 'Optional', required=True)
+    first_name = forms.CharField(max_length=30, required=True)
+    last_name = forms.CharField(max_length=30, required=True)
     email = forms.EmailField(required=True)
     
     class Meta:
