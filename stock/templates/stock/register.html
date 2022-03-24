@@ -1,0 +1,27 @@
+{% extends 'stock/base.html' %}
+{% {% block  content %}
+
+<div class="container py-5">
+    <h1> Register Here</h1>
+    <form action="post">
+        {% csrf_token %}
+        {{ RegisterForm }}
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+    <p class="text-center">If you have an account already, <a href="{% url 'login' %}">Login Here</a></p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock  %}%}
