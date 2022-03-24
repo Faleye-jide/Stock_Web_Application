@@ -1,27 +1,18 @@
 {% extends 'stock/base.html' %}
-{% {% block  content %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %} Register {% endblock %}
+{% block  content %}
 
 <div class="container py-5">
-    <h1> Register Here</h1>
-    <form action="post">
+    <h1> Sign for a new account</h1>
+    <form method="post" action="{% url 'register' %}">
         {% csrf_token %}
-        {{ RegisterForm }}
+        {{ RegisterForm|crispy }}
         <button class="btn btn-primary" type="submit">Register</button>
     </form>
-    <p class="text-center">If you have an account already, <a href="{% url 'login' %}">Login Here</a></p>
-
-
+    <p class="text-center">Already have an account?, <a href="#">Login Here</a></p>
 
 </div>
 
-
-
-
-
-
-
-
-
-
-
-{% endblock  %}%}
+{% endblock  %}
