@@ -1,7 +1,10 @@
+from re import U
+from sys import api_version
 import requests
 import pandas as pd
 # import matplotlib.pyplot as plt
 import datetime
+# import json
 
 
 # get the data
@@ -31,7 +34,7 @@ def get_quote(ticker):
     return response[0]
     
     
-def news(request):
-    pass
+
+    
 
 

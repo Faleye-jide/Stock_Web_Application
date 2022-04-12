@@ -7,6 +7,8 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from .models import stock
+import json
+import requests
 
 
 # Create your views here.
@@ -31,6 +33,22 @@ def ticker(request, ticker_id):
 
 def about(request):
     return render(request, 'stock/about.html', {})
+
+def get_news(request):
+    url = 'https://stocknewsapi.com/api/v1/category?section=alltickers&items=50&token=myrtchxv2dwwls1qr1cia9w0d3fn0jku9x3a9aht'
+    api_request = requests.get(url)
+    api = json.loads(api_request.content)
+
+    context = {
+        'api':api
+    }
+    return render(request, 'stock/news.html', context)
+
+# def news(request, ticker_id):
+#     context = {
+#         'news': get_news(ticker_id)
+#     }
+#     return render(request, 'stock/news.html', context)
 
 
 def register(request):

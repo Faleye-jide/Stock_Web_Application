@@ -2,10 +2,16 @@ from typing import Optional
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
+from . models import stock
 
 class TickerForm(forms.Form):
     ticker = forms.CharField(label='Ticker', max_length=5)
     
+    class Meta:
+        model = stock
+        fields = ['ticker']
+        
+
 
 class NewUserForm(forms.Form):
     first_name = forms.CharField(max_length=30, required=True)
