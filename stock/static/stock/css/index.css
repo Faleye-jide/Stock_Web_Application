@@ -1,9 +1,10 @@
+
 body{
-    /* background-image: url("{% static 'image/ima.jpg' %}"); */
+    background-image: url("{% static 'stock/images/ima.jpg' %}");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    background-color: black;
+    /* background-color: black; */
 }
 
 h1 {
@@ -11,29 +12,23 @@ h1 {
     font-family: ui-serif sans-serif;
     font-weight: 300;
     text-align: center;
-    padding-top: 50;
+    padding: 0 50;
     margin-top: 50;
     
 }
-
-nav{
-    float: left;
+.form-required{
+    display: none;
 }
 
 .login{
     text-align: center;
-    font-size: 50px;
+    font-size: 30px;
 }
 
 .text-center {
     text-align: center!important;
 
 }
-
-/* .div {
-
-
-} */
 
 
 .navbar {
