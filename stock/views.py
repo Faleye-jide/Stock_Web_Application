@@ -38,7 +38,7 @@ def get_news(request):
     url = 'https://stocknewsapi.com/api/v1/category?section=alltickers&items=50&token=myrtchxv2dwwls1qr1cia9w0d3fn0jku9x3a9aht'
     api_request = requests.get(url)
     api = json.loads(api_request.content)
-
+    print('here', api)
     context = {
         'api':api
     }
@@ -52,39 +52,48 @@ def get_news(request):
 
 
 def register(request):
+    if request.user.is_authenticated:
+        return redirect('home')
     if request.method == 'POST':
         form = NewUserForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request, user)
-            messages.success(request, 'Registration successful')
+            form.save()
             return redirect('login')
-        messages.error(request, 'Registration Unsuccessful')
+            # login(request, user)
+            # messages.success(request, 'Registration successful')
+            # return redirect('login')
+        else:
+            return render(request, 'stock/register.html', {'RegisterForm': form})
+        # messages.error(request, 'Registration Unsuccessful')
     # if it is a GET request
     # create a blank form 
-    form = NewUserForm()
-    return render(request, 'stock/register.html', context={'RegisterForm':form})
+    else:
+        form = NewUserForm()
+        return render(request, 'stock/register.html', context={'RegisterForm':form})
 
 def login_view(request):
+    if request.user.is_authenticated:
+        return render(request, 'stock/home.html')
     if request.method == 'POST':
         form = AuthenticationForm(request.POST)
         if form.is_valid():
-            username = request.POST.get('username')
-            password = request.POST.get('password')
+            username = request.POST['username']
+            password = request.POST['password']
             user = authenticate(request, username=username, password=password)
             if user:
                 login(request, user)
-                messages.info(request, f'You are logged in {username}')
+                # messages.info(request, f'You are logged in {username}')
                 return redirect('home')
             else:
                 messages.error(request, 'Invalid username or password')
         else:
             messages.error(request, 'Invalid username or password')
-    form = AuthenticationForm()
-    context = {
-        'loginForm':form
-    }
-    return render(request, 'stock/login.html', context=context)
+    else:
+        form = AuthenticationForm()
+        context = {
+            'loginForm':form
+        }
+        return render(request, 'stock/login.html', context=context)
 
 def logout_view(request):
     logout(request)

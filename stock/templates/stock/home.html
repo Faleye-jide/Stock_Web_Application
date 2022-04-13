@@ -1,9 +1,10 @@
 {% extends 'stock/base.html' %}
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
-
 {% block title %} Home {% endblock title %}
 {% block content %}
+<div class="container">
+    {% if request.user.is_authenticated %}
+    <p> Hello {{ request.user }}</p>
+    {% endif %}
 <div class="container text-center">
     <h1> Enter a stock symbol</h1>
     <form action="{% url 'home' %}"method="post">

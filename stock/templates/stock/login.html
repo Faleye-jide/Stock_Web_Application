@@ -4,13 +4,35 @@
 {% block  content %}
 
 <div class="container py-5">
-    <h1 class="login"> Login here</h1>
     <form method="post" action="{% url 'login' %}">
+      <h1 class="login"> Please login to your account</h1>
+        <h4> Login to see stock price and news</h>
         {% csrf_token %}
         {{ loginForm|crispy }}
         <button class="btn btn-primary" type="submit">Login</button>
+        <div class="text-center">
+            <p>Not a member? <a href="{% url 'register' %}">Register here</a></p>
+            <p>or sign up with:</p>
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="fab fa-facebook-f"></i>
+            </button>
+        
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="fab fa-google"></i>
+            </button>
+        
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="fab fa-twitter"></i>
+            </button>
+        
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="fab fa-github"></i>
+            </button>
+        </div>
+        <p class="text-center"><a href="#!" class="small text-muted">Terms of use.</a></p>
+        <p class="text-center"><a href="#!" class="small text-muted">Privacy policy</a></p>
+          
     </form>
-    <p class="text-center">Don't have an account?, <a href="/register">Login Here</a></p>
 
 </div>
 
