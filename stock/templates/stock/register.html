@@ -3,6 +3,9 @@
 {% block title %} Register {% endblock %}
 {% block  content %}
 
+{% if forms.error %}
+<p> There awas error eit the form</p>
+{% endif %}
 <div class="container py-5">
     <form method="post" action="{% url 'register' %}">
       <h1> Create an account</h1>

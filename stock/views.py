@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from .forms import TickerForm, NewUserForm
 # from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
@@ -57,14 +57,15 @@ def get_news(request):
 
 
 def register(request):
-    if request.user.is_authenticated:
-        return redirect('home')
+    # if request.user.is_authenticated:
+    #     return redirect('home')
     if request.method == 'POST':
         form = NewUserForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            login(request, user)
             return redirect('login')
-            # login(request, user)
+            
             messages.success(request, 'Registration successful')
             # return redirect('login')
         else:
@@ -104,7 +105,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    messages.info("you are logged out successfully")
+    messages.info(request, "you are logged out successfully")
     return redirect('home')
             
             
