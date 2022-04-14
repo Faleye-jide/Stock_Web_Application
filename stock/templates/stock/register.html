@@ -4,8 +4,8 @@
 {% block  content %}
 
 <div class="container py-5">
-    <h1> Create an account</h1>
     <form method="post" action="{% url 'register' %}">
+      <h1> Create an account</h1>
         {% csrf_token %}
         {{ RegisterForm|crispy }}
         <button class="btn btn-primary" type="submit">Register</button>

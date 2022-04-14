@@ -6,7 +6,7 @@
 <div class="container py-5">
     <form method="post" action="{% url 'login' %}">
       <h1 class="login"> Please login to your account</h1>
-        <h4> Login to see stock price and news</h>
+        <h4> Login to see stock price and news</h4>
         {% csrf_token %}
         {{ loginForm|crispy }}
         <button class="btn btn-primary" type="submit">Login</button>
