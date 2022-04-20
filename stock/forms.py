@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from . models import stock
 from django.forms import ModelForm
 
+# create class for ticker 
 class TickerForm(forms.Form):
     ticker = forms.CharField(label='Ticker', max_length=5)
     

@@ -11,5 +11,6 @@ urlpatterns = [
     path('news', views.get_news, name='news'),
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
+    path('add_stock/', views.add_stock, name='add_stock'),
     path('<str:ticker_id>', views.ticker, name='ticker'),
 ]

@@ -4,20 +4,20 @@
 
 <h1>Latest News </h1>
 <div class="container card-body">
+    <p class="card alert-success"> Check latest news</p>
     <div class="row">
-        {% if context %}
-        {% for x in context.data %}
-        <div class="card text-white bg-dark mb-3" style="width: 12rem;">
-            <a href="{{ x.news_url }}"><img href="{{ x.news_url }}" src="{{ x.image_url }}"></a>
-            <div class="card-body">
-                <h3 class="card-title"> {{ x.title }}
-                    <p class="card-text"> {{ x.text }}</p>
+        {% if api %}
+            {% for x in api.data %}
+                <div class="card text-white bg-dark mb-3" style="width: 12rem;">
+                    <a href="{{ x.news_url }}"><img href="{{ x.news_url }}" src="{{ x.image_url }}"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"> {{ x.title }}
+                        <p class="card-text"> {{ x.description }}</p>
 
+                    </div>
                 </div>
-            </div>
 
-
-        {% endfor %}
+            {% endfor %}
         {% endif %}
 
 

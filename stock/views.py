@@ -24,7 +24,7 @@ def home(request):
         form = TickerForm()
     return render(request, 'stock/home.html', {'form':form})
 
-@login_required(login_url='login')
+# @login_required(login_url='login')
 def ticker(request, ticker_id): 
     context = {
         'ticker': ticker_id,
@@ -38,22 +38,28 @@ def about(request):
     return render(request, 'stock/about.html', {})
 
 
-@login_required(login_url='login')
+# @login_required(login_url='login')
 def get_news(request):
-    url = 'https://stocknewsapi.com/api/v1/category?section=alltickers&items=50&token=myrtchxv2dwwls1qr1cia9w0d3fn0jku9x3a9aht'
-    api_request = requests.get(url)
-    api = json.loads(api_request.content)
-    # print('here', api)
-    context = {
-        'api':api
-    }
-    return render(request, 'stock/news.html', context)
+    # limit = '50'
+    # token = 'b8mhjejpepKneMAMpIlDa4hniZeOHNhnbzZkF3P8'
+    url = 'https://api.marketaux.com/v1/news/all?&exchanges=NYSE&filter_entities=true&published_after=2022-04-13T15:37&api_token=b8mhjejpepKneMAMpIlDa4hniZeOHNhnbzZkF3P8'
+    r = requests.get(url)
+    api = json.loads(r.content)
 
-# def news(request, ticker_id):
-#     context = {
-#         'news': get_news(ticker_id)
-#     }
-#     return render(request, 'stock/news.html', context)
+    '''
+    api = r.json()
+    print(api['data'])
+    api_list = []
+    for i in range(len(api['data'])):
+        api_list.append(api['data'][i])
+    print('list', api_list)
+    context = {
+         'api':api['data']
+    }
+    
+
+    '''
+    return render(request, 'stock/news.html', {'api':api})
 
 
 def register(request):
@@ -109,4 +115,27 @@ def logout_view(request):
     return redirect('home')
             
             
+def add_stock(request):
+    if request.method == 'POST':
+        form = TickerForm(request.POST or None)
+        
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Stock has been added to the portfolio')
+            return redirect('add_stock')
+        
+    elif request.method == 'GET':
+        ticker = stock.objects.all()
+        resutl = []
+        
+        for tick in ticker:
+            pass
                 
+            
+        
+    
+def delete(request, stock_id):
+    item = stock.objects.get(pk=stock_id) # fetch data from database by id
+    item.delete()
+    messages.success(request, 'Stock has been deleted successfully from the portfolio')   
+    return redirect('add_stock')
