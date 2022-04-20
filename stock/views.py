@@ -61,6 +61,8 @@ def get_news(request):
     '''
     return render(request, 'stock/news.html', {'api':api})
 
+def prediction(request):
+    pass
 
 def register(request):
     # if request.user.is_authenticated:
