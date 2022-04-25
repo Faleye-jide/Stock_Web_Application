@@ -9,9 +9,13 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from .models import stock
 from django.contrib.auth.decorators import login_required
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.linear_model import LinearRegression
+from keras.models import model_from_json
+import pandas as pd 
+import numpy as np
 import json
 import requests
-
 
 # Create your views here.
 def home(request):
@@ -61,8 +65,17 @@ def get_news(request):
     '''
     return render(request, 'stock/news.html', {'api':api})
 
-def prediction(request):
-    pass
+def predict(request):
+    
+    # scale data 
+    train_data = pd.read_csv('ml_model/Facebook_stock_price.csv')
+    train = train_data.head(5)
+    print(train)
+    show ={
+        'train':train
+    }
+    
+    return render(request, 'stock/prediction.html', show)
 
 def register(request):
     # if request.user.is_authenticated:
